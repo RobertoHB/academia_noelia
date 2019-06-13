@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 13-06-2019 a las 11:01:45
+-- Tiempo de generación: 13-06-2019 a las 11:50:56
 -- Versión del servidor: 10.1.32-MariaDB
 -- Versión de PHP: 7.0.30
 
@@ -49,7 +49,20 @@ CREATE TABLE `alumnos` (
 --
 
 INSERT INTO `alumnos` (`id`, `nombre`, `apellidos`, `direccion`, `NIF`, `nacimiento`, `movil`, `mail`, `observaciones`, `created_at`, `updated_at`, `alta`, `baja`) VALUES
-(1, 'Pepito', 'Perez', 'c/Alta 60 5b', '', '1973-07-09', '667743229', 'robherblanc@outlook.com', 'Prueba 2', '2019-04-28 22:56:56', '2019-04-28 23:06:25', '2019-05-01', NULL);
+(1, 'Pepito', 'Perez', 'c/Alta 60 5b', '', '1973-07-09', '667743229', 'robherblanc@outlook.com', 'Prueba 2', '2019-04-28 22:56:56', '2019-04-28 23:06:25', '2019-05-01', NULL),
+(2, 'Roberto', 'Hernandez Blanco', 'Bº DE LA TEJA 87', '20195088F', '0000-00-00', '667743229', 'robherblanc@outlook.com', 'Ninguna', NULL, NULL, '0000-00-00', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `asignaturas`
+--
+
+CREATE TABLE `asignaturas` (
+  `id_as` int(11) NOT NULL,
+  `nombre` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
+  `descripcion` text COLLATE utf8_spanish2_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 -- --------------------------------------------------------
 
@@ -68,6 +81,18 @@ CREATE TABLE `clases` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `cursos`
+--
+
+CREATE TABLE `cursos` (
+  `id_cur` int(11) NOT NULL,
+  `referencia` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
+  `descripcion` text COLLATE utf8_spanish2_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 -- --------------------------------------------------------
 
@@ -132,10 +157,22 @@ ALTER TABLE `alumnos`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `asignaturas`
+--
+ALTER TABLE `asignaturas`
+  ADD PRIMARY KEY (`id_as`);
+
+--
 -- Indices de la tabla `clases`
 --
 ALTER TABLE `clases`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `cursos`
+--
+ALTER TABLE `cursos`
+  ADD PRIMARY KEY (`id_cur`);
 
 --
 -- Indices de la tabla `migrations`
@@ -157,13 +194,25 @@ ALTER TABLE `profesores`
 -- AUTO_INCREMENT de la tabla `alumnos`
 --
 ALTER TABLE `alumnos`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `asignaturas`
+--
+ALTER TABLE `asignaturas`
+  MODIFY `id_as` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `clases`
 --
 ALTER TABLE `clases`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `cursos`
+--
+ALTER TABLE `cursos`
+  MODIFY `id_cur` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `migrations`
