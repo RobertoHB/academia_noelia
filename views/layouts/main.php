@@ -43,6 +43,14 @@ AppAsset::register($this);
             ['label' => 'Contact', 'url' => ['/site/contact']],
             ['label' => 'Alumnos', 'url' => ['/alumnos']],
             ['label' => 'Profesores', 'url' => ['/profesores']],
+            ['label' => 'Clases', 'url' => ['#'],
+                'template' => '<a href="{url}" >{label}<i class="fa fa-angle-left pull-right"></i></a>',
+                'items' => [
+                                    ['label' => 'Cursos', 'url' => ['/cursos']],
+                                    ['label' => 'Asignaturas', 'url' =>['/asignaturas']],
+                            ],
+    ],
+            
             Yii::$app->user->isGuest ? (
                 ['label' => 'Login', 'url' => ['/site/login']]
             ) : (
