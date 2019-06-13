@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.0.1
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
--- Servidor: localhost
--- Tiempo de generación: 13-06-2019 a las 11:50:56
--- Versión del servidor: 10.1.32-MariaDB
--- Versión de PHP: 7.0.30
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 13-06-2019 a las 17:30:00
+-- Versión del servidor: 10.1.40-MariaDB
+-- Versión de PHP: 7.3.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -64,6 +64,17 @@ CREATE TABLE `asignaturas` (
   `descripcion` text COLLATE utf8_spanish2_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
+--
+-- Volcado de datos para la tabla `asignaturas`
+--
+
+INSERT INTO `asignaturas` (`id_as`, `nombre`, `descripcion`) VALUES
+(1, 'CIENCIAS DE LA NATURALEZA', 'CIENCIAS NATURALES'),
+(2, 'CIENCIAS SOCIALES', 'CIENCIAS SOCIALES'),
+(3, 'LENGUA CASTELLANA Y LITERATURA', 'LENGUA'),
+(4, 'MATEMATICAS', 'MATEMATICAS'),
+(5, 'LENGUA EXTRANJERA', 'IDIOMAS');
+
 -- --------------------------------------------------------
 
 --
@@ -93,6 +104,24 @@ CREATE TABLE `cursos` (
   `referencia` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
   `descripcion` text COLLATE utf8_spanish2_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+--
+-- Volcado de datos para la tabla `cursos`
+--
+
+INSERT INTO `cursos` (`id_cur`, `referencia`, `descripcion`) VALUES
+(1, '1ESO', 'PRIMER CURSO DE LA ESO'),
+(2, '2ESO', 'SEGUNDO CURSO DE LA ESO'),
+(3, '3ESO', 'TERCER CURSO DE LA ESO'),
+(4, '4ESO', 'CUARTO CURSO DE LA ESO'),
+(5, '1PRIMA', 'PRIMERO DE PRIMARIA'),
+(6, '2PRIMA', 'SEGUNDO DE PRIMARIA'),
+(7, '3PRIMA', 'TERCERO DE PRIMARIA'),
+(8, '4PRIMA', 'CUARTO DE PRIMARIA'),
+(9, '5PRIMA', 'QUINTO DE PRIMARIA'),
+(10, '6PRIMA', 'SEXTO DE PRIMARIA'),
+(11, '1BACHI', 'PRIMERO DE BACHILLER'),
+(12, '2BACHI', 'SEGUNDO DE BACHILLER');
 
 -- --------------------------------------------------------
 
@@ -200,7 +229,7 @@ ALTER TABLE `alumnos`
 -- AUTO_INCREMENT de la tabla `asignaturas`
 --
 ALTER TABLE `asignaturas`
-  MODIFY `id_as` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_as` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `clases`
@@ -212,7 +241,7 @@ ALTER TABLE `clases`
 -- AUTO_INCREMENT de la tabla `cursos`
 --
 ALTER TABLE `cursos`
-  MODIFY `id_cur` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_cur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `migrations`
