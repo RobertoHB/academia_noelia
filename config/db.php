@@ -1,10 +1,10 @@
-<?php
+login con yii2<?php
 
 return [
     'class' => 'yii\db\Connection',
     'dsn' => 'mysql:host=localhost;dbname=academianoelia',
     'username' => 'root',
-    'password' => '',
+    'password' => 'eldeorejo',
     'charset' => 'utf8',
 
     // Schema cache options (for production environment)

@@ -1,4 +1,4 @@
--- phpMyAdmin SQL Dump
+﻿-- phpMyAdmin SQL Dump
 -- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
@@ -259,3 +259,110 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
+CREATE TABLE Orders (
+    OrderID int,
+    OrderNumber intLL,
+    PersonID int,
+    PRIMARY KEY (OrderID),
+    CONSTRAINT FK_PersonOrder FOREIGN KEY (PersonID)
+    REFERENCES Persons(PersonID)
+);
+
+
+
+USE academianoelia
+
+CREATE TABLE clases (
+  id_clase int AUTO_INCREMENT,
+  id_profesor int,
+  id_curso int,
+  id_asignatura int,
+  dias_sem int(2),
+  importe float(2,0),
+  PRIMARY KEY(id_clase),
+  CONSTRAINT FK_ClasesProfesores FOREIGN KEY(id_profesor) REFERENCES profesores(id), 
+  CONSTRAINT FK_ClasesCursos FOREIGN KEY(id_curso) REFERENCES cursos(id_cur),
+  CONSTRAINT FK_ClasesAsignatura FOREIGN KEY(id_asignatura) REFERENCES asignaturas(id_as)
+);
+
+CREATE TABLE reciben (
+  id int AUTO_INCREMENT,
+  id_alumno int,
+  id_clase int,
+  fecha_matri date,
+  estado bool,
+  PRIMARY KEY(id),
+  CONSTRAINT FK_recibenAlumnos FOREIGN KEY(id_alumno) REFERENCES alumnos(id), 
+  CONSTRAINT FK_recibenClases FOREIGN KEY(id_clase) REFERENCES clases(id_clase),
+  UNIQUE(id_alumno,id_clase)
+);
+
+CREATE TABLE pagos (
+  id int AUTO_INCREMENT,
+  id_clase int,
+  fecha date,
+  estado bool,
+  PRIMARY KEY(id),
+  CONSTRAINT FK_PagosClases FOREIGN KEY(id_clase) REFERENCES clases(id_clase)
+);
+
+CREATE TABLE cobros (
+  id int AUTO_INCREMENT,
+  id_clase int,
+  fecha date,
+  estado bool,
+  PRIMARY KEY(id),
+  CONSTRAINT FK_CobrosClases FOREIGN KEY(id_clase) REFERENCES clases(id_clase)
+);
+
+
+
+/*foreign key*/
+ USE academianoelia
+
+CREATE TABLE clases (
+  id_clase int AUTO_INCREMENT,
+  id_profesor int(10),
+  id_curso int(11),
+  id_asignatura int(11),
+  dias_sem int(2),
+  importe float(2,0),
+  PRIMARY KEY(id_clase),
+  CONSTRAINT FK_ClasesProfesores FOREIGN KEY(id_profesor) REFERENCES profesores(id), 
+  CONSTRAINT FK_ClasesCursos FOREIGN KEY(id_curso) REFERENCES cursos(id_cur),
+  CONSTRAINT FK_ClasesAsignatura FOREIGN KEY(id_asignatura) REFERENCES asignaturas(id_as)
+);
+/*
+CREATE TABLE reciben (
+  id int AUTO_INCREMENT,
+  id_alumno int,
+  id_clase int,
+  fecha_matri date,
+  estado bool,
+  PRIMARY KEY(id),
+  CONSTRAINT FK_recibenAlumnos FOREIGN KEY(id_alumno) REFERENCES alumnos(id), 
+  CONSTRAINT FK_recibenClases FOREIGN KEY(id_clase) REFERENCES clases(id_clase),
+  UNIQUE(id_alumno,id_clase)
+);
+
+CREATE TABLE pagos (
+  id int AUTO_INCREMENT,
+  id_clase int,
+  fecha date,
+  estado bool,
+  PRIMARY KEY(id),
+  CONSTRAINT FK_PagosClases FOREIGN KEY(id_clase) REFERENCES clases(id_clase)
+);
+
+CREATE TABLE cobros (
+  id int AUTO_INCREMENT,
+  id_clase int,
+  fecha date,
+  estado bool,
+  PRIMARY KEY(id),
+  CONSTRAINT FK_CobrosClases FOREIGN KEY(id_clase) REFERENCES clases(id_clase)
+);
+
+
